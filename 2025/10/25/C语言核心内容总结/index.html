@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 8.0.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,16 +17,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>Archives - 田钰龙的博客</title>
+  <title>C语言核心内容总结 - 田钰龙的博客</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Archives">
-<meta property="og:url" content="http://tianyulong31.github.io.git/archives/2025/10/">
+    <meta name="description" content="距离学完C语言核心内容已过半月、是时候总结一下我的学习成果了，在过去的半月中、曾一度面对困难想要逃避放弃，但积累的成果告诉我，我已经做了这么多了，那些曾经棘手的问题都已经转换成了我积累的一部分了。 C语言核心内容笔记  核心关键字32 个关键字auto  break  case  char  const  continue  default  dodouble else   enum  exter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言核心内容总结">
+<meta property="og:url" content="http://tianyulong31.github.io.git/2025/10/25/C%E8%AF%AD%E8%A8%80%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/">
 <meta property="og:site_name" content="田钰龙的博客">
+<meta property="og:description" content="距离学完C语言核心内容已过半月、是时候总结一下我的学习成果了，在过去的半月中、曾一度面对困难想要逃避放弃，但积累的成果告诉我，我已经做了这么多了，那些曾经棘手的问题都已经转换成了我积累的一部分了。 C语言核心内容笔记  核心关键字32 个关键字auto  break  case  char  const  continue  default  dodouble else   enum  exter">
 <meta property="og:locale" content="zn_CN">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/zongjie1.jpg">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/zongjie2.jpg">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/zongjie3.jpg">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/memory.png">
+<meta property="article:published_time" content="2025-10-25T02:07:56.988Z">
+<meta property="article:modified_time" content="2025-10-25T05:12:41.196Z">
 <meta property="article:author" content="tianyulong31">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tianyulong31.github.io.git/assets/images/zongjie1.jpg">
   
   
   
@@ -42,12 +51,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://tianyulong31.github.io.git","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"name":"田钰龙的博客","description":"","url":"http://tianyulong31.github.io.git"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"dateCreated":"2025-10-25T10:07:56+08:00","dateModified":"2025-10-25T13:12:41+08:00","datePublished":"2025-10-25T10:07:56+08:00","description":"","headline":"C语言核心内容总结","mainEntityOfPage":{"@type":"WebPage","@id":"http://tianyulong31.github.io.git/2025/10/25/C%E8%AF%AD%E8%A8%80%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/"},"publisher":{"@type":"Organization","name":"tianyulong31","sameAs":[]},"url":"http://tianyulong31.github.io.git/2025/10/25/C%E8%AF%AD%E8%A8%80%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/","image":[]}</script>
   
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="\assets\images\0a50b525533da9bc15dbe7b7a91aa172.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">田钰龙的博客</div><div class="sub cap">人生得意须尽欢</div></a></div></header>
@@ -59,21 +68,91 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
 
+
+
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/10/25/C%E8%AF%AD%E8%A8%80%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/"><span class="title">C语言核心内容总结</span></a><a class="item title" href="/2025/10/22/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA/"><span class="title">使用c语言创建顺序表</span></a><a class="item title" href="/2025/10/18/2025%E5%B9%B49%E6%9C%88-10%E6%9C%88%E6%80%BB%E7%BB%93/"><span class="title">2025年9月-10月总结</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="\assets\images\0a50b525533da9bc15dbe7b7a91aa172.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">田钰龙的博客</div><div class="sub cap">人生得意须尽欢</div></a></div></header>
-
- 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">Recent</a><a class="active" href="/archives/">Archives</a></nav></div></div></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2025</div><div class="archive-list"><a class='post fs14' href="/2025/10/25/C%E8%AF%AD%E8%A8%80%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/"><time>10-25</time><span>C语言核心内容总结</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/10/22/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA/"><time>10-22</time><span>使用c语言创建顺序表</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/10/18/2025%E5%B9%B49%E6%9C%88-10%E6%9C%88%E6%80%BB%E7%BB%93/"><time>10-18</time><span>2025年9月-10月总结</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-10-25T02:07:56.988Z">2025-10-25</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-10-25T05:12:41.196Z">2025-10-25</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>C语言核心内容总结</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>距离学完C语言核心内容已过半月、是时候总结一下我的学习成果了，在过去的半月中、曾一度面对困难想要逃避放弃，但积累的成果告诉我，我已经做了这么多了，那些曾经棘手的问题都已经转换成了我积累的一部分了。</p>
+<h1 id="C语言核心内容笔记"><a href="#C语言核心内容笔记" class="headerlink" title="C语言核心内容笔记"></a>C语言核心内容笔记</h1><p><img src="/assets/images/zongjie1.jpg" alt="部分c语言笔记"><br><img src="/assets/images/zongjie2.jpg" alt="部分c语言笔记"><br><img src="/assets/images/zongjie3.jpg" alt="部分c语言笔记"> </p>
+<h1 id="核心关键字"><a href="#核心关键字" class="headerlink" title="核心关键字"></a>核心关键字</h1><p>32 个关键字<br><strong>auto  break  case  char  const  continue  default  do<br>double else   enum  extern float  for    goto   if<br>int   long   register return short  signed  sizeof  static<br>struct switch  typedef union  unsigned void   volatile while</strong></p>
+<p>第一档 ：<br>int   整型类型关键字，声明整数变量、函数返回值。<br>return  函数返回语句，结束函数并带回结果。<br>if （else）   条件判断<br>for   计数循环最常用。<br>while  条件循环。<br>break  跳出当前循环或switch。<br>continue 跳过本轮循环剩余语句。<br>switch 多路分支。<br>case  switch 的分支标签。<br>default  处理switch中为被case标签匹配的情况。<br>void  “空”类型，函数不返回值或指针不带类型。<br>sizeof  编译期求类型&#x2F;对象字节数</p>
+<p>第二档：<br>char  字符／最小整数类型。<br>float  单精度浮点。<br>double 双精度浮点。<br>long  加长整型<br>short  短整型。<br>signed &#x2F; unsigned  有符号／无符号修饰符。<br>const  只读修饰符，编译期阻止修改。<br>static  两种用法：<br> 1. 函数内部——静态存储期，只初始化一次。<br> 2. 函数&#x2F;文件外部——内部链接，只对当前文件可见。<br>extern  声明标识符“定义在别处”，跨文件引用全局变量&#x2F;函数。<br>struct  结构体，聚合类型之王。<br>union  联合体，同一内存 overlay 多种类型。<br>enum  枚举，给整型常量起名字。<br>typedef  给已有类型起新名字，造“别名”。<br>volatile 告诉编译器“该对象可能异步改变”，禁止优化。</p>
+<p>第三档<br>auto  函数内局部变量默认就是 auto，写不写都一样。<br>do   do{…}while(); 循环，至少执行一次。<br>goto  无条件跳转，能不用就不用。<br>register 建议编译器把变量放寄存器，现代编译器基本忽略。</p>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><p><em>学习c语言一定要联系计算机背后的运行逻辑，而其与计算机中的内存管理最为重要</em></p>
+<p><img src="/assets/images/memory.png" alt="内存"></p>
+<p>保留区<br>作用<br>捕获“空指针解引用”和“小偏移量野指针”<br>为内核 vsyscall、vsyscall32、vdso 等保留固定映射页<br>属性：不可访问</p>
+<p>代码段<br>内容：<br> – 所写的函数体、编译器生成的辅助函数。<br> – 模块初始化函数（**init）在 Linux 内核被收集到 .init.text，启动完后内核会把这块回收。<br>属性：可读可执行，不可写。<br>生命周期：随进程一直存在；内核模块的 .init.text 在初始化结束被 free_init_pages() 释放。</p>
+<p>数据段rodata<br>编译器把字符串、跳转表等单独放进 .rodata，只读数据段防止映射成可执行页。<br>内容：字符串字面量、const 全局变量、switch 跳转表、printk 的格式串……</p>
+<p>已初始化数据段Data<br>内容：<br> – 全局变量、文件作用域变量、static 局部变量，且你在源码里给了初值。<br> – 内核的 **initdata，启动后同样会被回收。<br>属性：可读可写，不可执行。</p>
+<p>未初始化数据段BSS<br>内容：全局&#x2F;static 变量未显式赋初值（或初值为 0）<br>属性：可读可写，不可执行。</p>
+<p>堆<br>内容：malloc&#x2F;calloc&#x2F;new、realloc、free 管理的对象；内核的 kmalloc(vmalloc) 区。<br>增长方向：向高地址伸展。<br>属性：可读可写，可执行堆需显示（高危操作）。<br>生命周期：程序员显式释放或进程退出时内核统一回收。</p>
+<p>栈<br>内容：<br> – 函数调用的返回地址、参数、局部变量、寄存器保存区。<br> – 编译器生成的临时数组、VLAs、alloca()。内容：<br>增长方向：向低地址生长<br>属性：可读可写，不可执行。<br>生命周期：线程创建时分配，线程退出时回收；主线程随进程一起消失。</p>
+<h1 id="动态内存管理"><a href="#动态内存管理" class="headerlink" title="动态内存管理"></a>动态内存管理</h1><p><strong>malloc、calloc</strong><br>都是向“堆（heap）”申请一块连续内存的标准库函数，不会被自动回收，需要手动释放。<br>本身属于 libc 的 text（代码段）；它们返回的那块空间才属于 heap（堆）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void *malloc(size_t size);                // 申请 size 字节，内容不确定</span><br><span class="line">void *calloc(number, size_t size);        // 申请 number 块，每块size字节 ，全部清 0</span><br><span class="line">//返回值：成功返回指向首字节的  void * ，失败返回  NULL 。所以必须做 NULL 检查！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>calloc与malloc的优缺点：<br>1.calloc  内部会检测  number*size  是否溢出；而  malloc  不会，使用malloc必须做溢出处理。<br>2.申请大块内存  calloc会把每一页刷成 0，所以比malloc慢。如果随后需要自己再写一遍，不如直接  malloc +手动赋初值。<br>3.无论是  malloc  还是  calloc ，都必须用  free(ptr)  释放一次且仅一次。</p>
+<p><strong>memset</strong><br>memset  是 C 标准库  &lt;string.h&gt;  里最常用的“内存填充”工具函数把从地址a开始的n个字节，全部设置为同一个字节值b。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br><span class="line">void *memset(void *a, int b, size_t n);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>memset的典型用法<br>1.清零</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int a[100];</span><br><span class="line">memset(a, 0, sizeof a);          // 整个数组变 0 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2.置1字节</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unsigned char buf[64];</span><br><span class="line">memset(buf, 0xFF, sizeof buf);   // 每个字节 0xFF </span><br></pre></td></tr></table></figure>
+
+<p>3.初始化为某个字节</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char str[32];</span><br><span class="line">memset(str, &#x27;*&#x27;, sizeof str - 1);/* 31 个 &#x27;*&#x27; */</span><br><span class="line">str[31] = &#x27;\0&#x27;;                  // 手动补字符串结束符 、</span><br></pre></td></tr></table></figure>
+
+<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><p><strong>防御性编程</strong><br>定义：<br>种主动预防错误的编程策略，强调在代码中提前识别并处理潜在问题，避免因外部输入、异常状态或并发操作导致系统崩溃<br>核心假设 ：<br>输入总是错误的- 外部依赖不可靠- 代码本身可能有 bug<br>目标 ：<br>提高系统的健壮性、可维护性、容错能力，降低故障蔓延风险。</p>
+<p><strong>Segmentation（段错误）</strong><br> 根本原因：访问了无权或无效的虚拟地址<br>1.解印引用NULL<br>2.野指针&#x2F;悬垂指针<br>3.越界访问<br>4.缓冲区溢出覆盖返回地址<br>5.对字符串常量区写入<br>6.函数返回局部变量地址</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>学习c语言没有完成时，只有提高我们的逻辑思维不断的增加c语言相关知识，才能够编程出更精简更出色的代码。<br>学习了c语言的知识就该知道如何使用它们，在使用的过程中接触新的内容，融会贯通，才能在编程的道路上越走越。</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>License</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/10/22/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA/">使用c语言创建顺序表</a></div></section></div>
+
+
+
+
+
+
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">tianyulong31</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E7%AC%94%E8%AE%B0"><span class="toc-text">C语言核心内容笔记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">核心关键字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">内存管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">动态内存管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">错误处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
