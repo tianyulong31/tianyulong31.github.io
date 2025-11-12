@@ -17,16 +17,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>田钰龙的博客</title>
+  <title>高速缓存与其他存储设备 - 田钰龙的博客</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="田钰龙的博客">
-<meta property="og:url" content="http://tianyulong31.github.io.git/">
+    <meta name="description" content="本文为嵌入式系统设计师教程相关阅读笔记，记录学习内容以便后来查看以及分享我的学习积累 高速缓存Cache位置：位于处理器和外部内存之间速度比RAM更快的存储器一般称之为高速缓存器 当处理器执行程序时需要不断的访问内存，而读取内存的速度比CPU慢，严重制约系统实际性能 CPU总是访问当前内存地址的相邻地址，符合局部性访问原理，基于此原理通过在CPU和外部存储器之间设计高速缓冲器，可使CPU进行外部存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高速缓存与其他存储设备">
+<meta property="og:url" content="http://tianyulong31.github.io.git/2025/11/11/%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8E%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/">
 <meta property="og:site_name" content="田钰龙的博客">
+<meta property="og:description" content="本文为嵌入式系统设计师教程相关阅读笔记，记录学习内容以便后来查看以及分享我的学习积累 高速缓存Cache位置：位于处理器和外部内存之间速度比RAM更快的存储器一般称之为高速缓存器 当处理器执行程序时需要不断的访问内存，而读取内存的速度比CPU慢，严重制约系统实际性能 CPU总是访问当前内存地址的相邻地址，符合局部性访问原理，基于此原理通过在CPU和外部存储器之间设计高速缓冲器，可使CPU进行外部存">
 <meta property="og:locale" content="zn_CN">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/Cache/1.png">
+<meta property="article:published_time" content="2025-11-11T08:18:02.688Z">
+<meta property="article:modified_time" content="2025-11-12T03:37:31.630Z">
 <meta property="article:author" content="tianyulong31">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tianyulong31.github.io.git/assets/images/Cache/1.png">
   
   
   
@@ -42,12 +48,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://tianyulong31.github.io.git","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"name":"田钰龙的博客","description":"","url":"http://tianyulong31.github.io.git"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"dateCreated":"2025-11-11T16:18:02+08:00","dateModified":"2025-11-12T11:37:31+08:00","datePublished":"2025-11-11T16:18:02+08:00","description":"","headline":"高速缓存与其他存储设备","mainEntityOfPage":{"@type":"WebPage","@id":"http://tianyulong31.github.io.git/2025/11/11/%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8E%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/"},"publisher":{"@type":"Organization","name":"tianyulong31","sameAs":[]},"url":"http://tianyulong31.github.io.git/2025/11/11/%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8E%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/","image":[]}</script>
   
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="\assets\images\0a50b525533da9bc15dbe7b7a91aa172.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">田钰龙的博客</div><div class="sub cap">人生得意须尽欢</div></a></div></header>
@@ -59,58 +65,86 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
 
+
+
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/11/11/%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8E%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/"><span class="title">高速缓存与其他存储设备</span></a><a class="item title" href="/2025/11/06/%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%A6%82%E8%BF%B0/"><span class="title">STM32开发板概述</span></a><a class="item title" href="/2025/11/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%9C%E6%A0%91%E2%80%9D%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="title">树</span></a><a class="item title" href="/2025/10/28/%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/"><span class="title">使用c语言实现顺序栈</span></a><a class="item title" href="/2025/10/26/%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA/"><span class="title">使用c语言创建双向循环链表</span></a><a class="item title" href="/2025/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%AC%AC%E4%B8%80%E7%AB%A0/"><span class="title">计算机系统基础知识</span></a><a class="item title" href="/2025/10/25/C%E8%AF%AD%E8%A8%80%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/"><span class="title">C语言核心内容总结</span></a><a class="item title" href="/2025/10/22/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA/"><span class="title">使用c语言创建顺序表</span></a><a class="item title" href="/2025/10/18/2025%E5%B9%B49%E6%9C%88-10%E6%9C%88%E6%80%BB%E7%BB%93/"><span class="title">2025年9月-10月总结</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="\assets\images\0a50b525533da9bc15dbe7b7a91aa172.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">田钰龙的博客</div><div class="sub cap">人生得意须尽欢</div></a></div></header>
 
 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a class="active" href="/">Recent</a><a href="/archives/">Archives</a></nav></div></div></div>
-<div class="post-list post"><div class="post-card-wrap"><a class="post-card post" href="/2025/11/11/%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8E%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/">
-<article class="md-text"><h2 class="post-title">高速缓存与其他存储设备</h2><div class="excerpt"><p>本文为嵌入式系统设计师教程相关阅读笔记，记录学习内容以便后来查看以及分享我的学习积累
-高速缓存Cache位置：位于处理器和外部内存之间速度比RAM更快的存储器一般称之为高速缓存器
-当处理器执行程序时需要不断的访问内存，而读取内存的速度比CPU慢，严重...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-11-11T08:18:02.688Z">2025-11-11</time></span></div></article>
-</a></div><div class="post-card-wrap"><a class="post-card post" href="/2025/11/06/%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%A6%82%E8%BF%B0/">
-<article class="md-text"><h2 class="post-title">STM32开发板概述</h2><div class="excerpt"><p>国内定义：嵌入式就是以应用为中心，以计算机技术为基础，软硬件可裁剪，适用于对于体积、可靠性、功耗、性能等方面严格要求的专用计算机系统。
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-11-11T08:18:02.688Z">2025-11-11</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-11-12T03:37:31.630Z">2025-11-12</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>高速缓存与其他存储设备</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>本文为嵌入式系统设计师教程相关阅读笔记，记录学习内容以便后来查看以及分享我的学习积累</p>
+<h1 id="高速缓存Cache"><a href="#高速缓存Cache" class="headerlink" title="高速缓存Cache"></a>高速缓存Cache</h1><p>位置：位于处理器和外部内存之间<br>速度比RAM更快的存储器一般称之为高速缓存器</p>
+<p>当处理器执行程序时需要不断的访问内存，而读取内存的速度比CPU慢，严重制约系统实际性能</p>
+<p>CPU总是访问当前内存地址的相邻地址，符合局部性访问原理，基于此原理通过在CPU和外部存储器之间设计高速缓冲器，可使CPU进行外部存储设备的局部存储，<strong>可提高对CPU对外部存储设备的访问效率</strong>。</p>
+<p>Cache的主要作用：对外部存储设备的缓冲<br>Cache的组成：内部由块号和块内偏移组成<br>原理：<br>(1)Cache收到CPU访问内存地址</p>
+<p>(2)Cache将CPU访问内存的地址分解为块号和块内偏移</p>
+<p>(3)利用分解的块号查找Cache内部的Cache块</p>
+<p>(4)通过（3）找到一个即为命中，再用块内偏移区索引该块中的数据：当前是读内存即可立即将Cache中缓存的数据返回给CPU；<br>如果是写操作：<br>1）<strong>Write-Through（写直达）</strong><br>动作：数据同时写入Cache和主存<br>优点：数据一致性高，主存始终是最新的<br>缺点：写操作慢，因为每次都要写入主存<br>2）<strong>Write-Back（写回）</strong><br>动作：数据写回Cache，不立即写入主存，当Cache行替换时才写回主存<br>优点：写操作快，减少主存访问次数<br>缺点：数据一次性差，主存数据不是最新的<br>3）<strong>Write-Allocate（写分配）</strong><br>动作：写操作时，若数据不在Cache中，先将数据加载到Cache中再写入<br><strong>通常与Write-Back搭配使用</strong><br>优点：后续写操作可以命中Cache<br>缺点：首次写操作需要额外一次读操作<br>4）<strong>NO-Write-Allocate（非写分配）</strong><br>动作：数据不在Cache中直接写入主存，不加载到Cache<br><strong>通常与Write-Through搭配使用</strong></p>
+<p>例子：采用<strong>Write-Back（写回）<strong>和</strong>Write-Allocate（写分配）</strong><br>写入一个地址，如果Cache命中，只写Cache，标记为dirty<br>写入一个地址，如果Cache不命中，先从主存加载该地址的数据到Cache，然后再写入Cache，并标记为dirty<br>当该Cache行被替换时，才会把dirty数据写回主存</p>
+<p>(5)如果未命中，Cache首先查找内部Cache内部有没有空闲块，若找到了空闲块，就在该块中装入CPU访问内存地址对应的内存块，若是读内存操作就把这个地址对应的数据返回给CPU，写入操作根据类型不同，动作也不同</p>
+<p>(6)如果没有找到空闲块，则需要使用Cache管理中的块替换策略，找到Cache中可替换出去的块，如果是读内存操作，那么根据替换块的块号和状态，Cache会决定是否把这个块写刀内存中，同时把这个地址对应的数据返回给CPU，写入操作根据类型不同，动作也不同</p>
+<p>Cache出现命中和不命中的原因： Cache 只是主存的一小部分“副本”，不可能把全部内存都装进去，所以任何映射策略都必然出现</p>
+<p>现代计算机默认路径是Cache，CPU读取内存任何数据都会经过Cache<br>但机器里还有大量刻意绕过 Cache 的区间：<br>1.内存映射 I&#x2F;O（MMIO）、PCIe BAR、显卡帧缓冲<br>2.DMA 共享环形缓冲区、网卡描述符队列<br>3.由驱动标记为 UC&#x2F;WC 或 ARM Device&#x2F;Greedy 的页这些区域 CPU 一访问就直接走内存总线，不进任何 Cache 层次</p>
+<p>Cache的重要作用<br>Cache通过提高CPU访问效率来缓解CPU和内存之间的速度不匹配</p>
+<p>Cache的工作机制示意图<br><img src="/assets/images/Cache/1.png" alt="1"></p>
+<h1 id="其他存储设备"><a href="#其他存储设备" class="headerlink" title="其他存储设备"></a>其他存储设备</h1><p><strong>1.快闪存储器（FLASH）</strong><br>简称闪存，闪存的大部分芯片需要块擦拭，正因为写入速度较快，所以称为闪存</p>
+<p>FLASH分为两类；NOR FLASH和NAND FLASH<br>（1）NOR FLASH<br>任何FLASH的写入操作只能在空或已擦拭的单元内进行，即在写入操作前必须进行擦拭，NOR FLASH在擦拭前把先将目标块内所有位都写为0<br>NOR FLASH带有SRAM接口，易存取其内部每一个字节，可直接连接系统总线构成内存储器</p>
+<p>（2）NAND FLASH<br>NAND器件使用复杂的I&#x2F;O口来串行的存取数据，但不能构成内存，只能构成外存储器<br>NAND的读和写操作一般采取512字节的块</p>
+<p>两者对比<br>1.NOR的读速度比NAND快，但NAND的写入速度远比NOR快<br>2.NAND的擦拭速度远比NOR的快，因为NAND的擦拭单元更小，擦拭电路更少<br>3.NOR FLASH上可直接运存程序，NAND FLASH只能存储信息</p>
+<p><strong>2.磁盘、光盘等存储介质</strong></p>
+<p>1）磁盘<br>磁盘存取速度都最快、具有较大的存储容量</p>
+<p>磁盘存储器是由盘片、驱动的器、控制器和接口组成<br>1.盘片的两面用来存储信息<br>2.驱动器控制数据的写入和读写<br>3.控制器接收主机发出的命令，控制磁盘驱动器写入和读写，实现主机与其的数据转移和传送<br>4.接口是主机和磁盘存储器之间的连接逻辑</p>
+<p>磁盘也被称为硬盘存储器，其作用原理和组成大致相同<br>硬盘驱动器内使用了多个盘片，提高了存储器的存储容量</p>
+<p>硬盘的接口方式决定了硬盘的性能<br>常见的接口有IDE（ATA）和SCSI，还有一些采用PCMCIA或USB接口<br>IDE用于普通用户SCSI用于服务器等高端应用场合</p>
+<p>2）光盘<br>利用磁头变化和磁头电流进行读或写</p>
+<p>3）CF（Compact FLASH）<br>IDE接口的固态硬盘，块存&#x2F;耐震&#x2F;大容量，针脚多、体积大</p>
+<p>4）SD（Secure Digital Memory Card）<br>基于半导体快闪记忆器，重量轻、高记忆容量、快速数据传输、极大的移动灵活性和很好的安全性</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>License</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
 
-微控制器的关系现在的市场需求：成本低、性能高、功耗低、多任务、易用界面
-基于市场需求ARM公司
-ARM公司的开发...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-11-06T05:08:26.554Z">2025-11-06</time></span></div></article>
-</a></div><div class="post-card-wrap"><a class="post-card post" href="/2025/11/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%9C%E6%A0%91%E2%80%9D%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">
-<article class="md-text"><h2 class="post-title">树</h2><div class="excerpt"><p>树的概念节点（Node）-树中的每个元素。根节点（Root）-树的起点。叶子节点（Leaf）-没有子节点的节点深度：从根到该节点的路径长度。度-一个节点的子节点个数
-树的分类满二叉树所有非叶子节点都有两个子节点，且所有叶子在同一层。完全二叉树除最后一...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-11-03T10:54:10.769Z">2025-11-03</time></span></div></article>
-</a></div><div class="post-card-wrap"><a class="post-card post" href="/2025/10/28/%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/">
-<article class="md-text"><h2 class="post-title">使用c语言实现顺序栈</h2><div class="excerpt"><p>我总结的实现顺序栈的步骤是
+</div>
 
-定结构 “顺序栈”需要使用连续内存保存元素；则结构体中需要可指向动态分配内存的*data记录栈顶下标  top  与当前容量  capacity 。
-选内存策略 静态方案：定长数组（简单，但不可扩容）。 动态方案：cal...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-10-28T08:42:01.877Z">2025-10-28</time></span></div></article>
-</a></div><div class="post-card-wrap"><a class="post-card post" href="/2025/10/26/%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA/">
-<article class="md-text"><h2 class="post-title">使用c语言创建双向循环链表</h2><div class="excerpt"><p>代码展示代码由本人所写，注释由AI生成仅供参考
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-10-26T09:32:30.796Z">2025-10-26</time></span></div></article>
-</a></div><div class="post-card-wrap"><a class="post-card post" href="/2025/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%AC%AC%E4%B8%80%E7%AB%A0/">
-<article class="md-text"><h2 class="post-title">计算机系统基础知识</h2><div class="excerpt"><p>这是我阅读《嵌入式系统设计师》第一章所写的笔记以及知识概要，第一章讲的是计算机的基础知识，涉及的到了计算机各种器件、系统包括底层逻辑。
-嵌入式计算机系统概述计算机硬件嵌入式计算机是以应用为中心，以计算机技术为基础，软件硬件可裁剪，适应应用系统对功能、...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-10-26T04:20:42.943Z">2025-10-26</time></span></div></article>
-</a></div><div class="post-card-wrap"><a class="post-card post" href="/2025/10/25/C%E8%AF%AD%E8%A8%80%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93/">
-<article class="md-text"><h2 class="post-title">C语言核心内容总结</h2><div class="excerpt"><p>距离学完C语言核心内容已过半月、是时候总结一下我的学习成果了，在过去的半月中、曾一度面对困难想要逃避放弃，但积累的成果告诉我，我已经做了这么多了，那些曾经棘手的问题都已经转换成了我积累的一部分了。
-C语言核心内容笔记 
-核心关键字32 个关键字aut...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-10-25T02:07:56.988Z">2025-10-25</time></span></div></article>
-</a></div><div class="post-card-wrap"><a class="post-card post" href="/2025/10/22/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA/">
-<article class="md-text"><h2 class="post-title">使用c语言创建顺序表</h2><div class="excerpt"><p>  本篇文章是我学习数据结构过程中，共花费4个小时实现顺序表创建的c语言代码，学完c语言后第一次完全由自己从零到一写完代码的过程，在学习过程中总会遇到当前阶段难以挑战的困难，我也在学习数据结构的过程中几次逃避，但是‘积累’给我带来面对挑战的勇气，长期...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-10-22T04:05:23.167Z">2025-10-22</time></span></div></article>
-</a></div><div class="post-card-wrap"><a class="post-card post" href="/2025/10/18/2025%E5%B9%B49%E6%9C%88-10%E6%9C%88%E6%80%BB%E7%BB%93/">
-<article class="md-text"><h2 class="post-title">2025年9月-10月总结</h2><div class="excerpt"><p>这是我2025年至2026年的规划，截至至2025年10月18日我已经学完了c语言，预计至10月25日学完嵌入式该具备的数据结构知识。为应对软件考试：嵌入式系统设计师，我也在阅读《嵌入式系统设计师教程》，预计明年报考。
-c语言部分笔记展示 
-阅读《嵌...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-10-18T03:25:04.675Z">2025-10-18</time></span></div></article>
-</a></div></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/11/06/%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%A6%82%E8%BF%B0/">STM32开发板概述</a></div></section></div>
+
+
+
+
 
 
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">tianyulong31</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache"><span class="toc-text">高速缓存Cache</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-text">其他存储设备</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
