@@ -17,22 +17,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>高速缓存与其他存储设备 - 田钰龙的博客</title>
+  <title>GPIO外设 - 田钰龙的博客</title>
 
   
-    <meta name="description" content="本文为嵌入式系统设计师教程相关阅读笔记，记录学习内容以便后来查看以及分享我的学习积累 高速缓存Cache位置：位于处理器和外部内存之间速度比RAM更快的存储器一般称之为高速缓存器 当处理器执行程序时需要不断的访问内存，而读取内存的速度比CPU慢，严重制约系统实际性能 CPU总是访问当前内存地址的相邻地址，符合局部性访问原理，基于此原理通过在CPU和外部存储器之间设计高速缓冲器，可使CPU进行外部存">
+    <meta name="description" content="GPIO的概念GPIO（Gener Purpose Input&#x2F;Output）是外设中最基本的且最通用的外设GPIO引脚核心作用是作为通用的输入输出口 FLASH的起始地址：0x0800_0000  MCU识别电信号 通过RST引脚传输0，跳到起始电路（参考复位电路） BOOT0和BOOT1引脚；设置自举模式 GPIO的定义对某个引脚进行高低电平的输出，以及检查某个引脚的电平状态TTL电">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高速缓存与其他存储设备">
-<meta property="og:url" content="http://tianyulong31.github.io.git/2025/11/11/%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8E%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/">
+<meta property="og:title" content="GPIO外设">
+<meta property="og:url" content="http://tianyulong31.github.io.git/2025/11/18/GPIO%E5%A4%96%E8%AE%BE/">
 <meta property="og:site_name" content="田钰龙的博客">
-<meta property="og:description" content="本文为嵌入式系统设计师教程相关阅读笔记，记录学习内容以便后来查看以及分享我的学习积累 高速缓存Cache位置：位于处理器和外部内存之间速度比RAM更快的存储器一般称之为高速缓存器 当处理器执行程序时需要不断的访问内存，而读取内存的速度比CPU慢，严重制约系统实际性能 CPU总是访问当前内存地址的相邻地址，符合局部性访问原理，基于此原理通过在CPU和外部存储器之间设计高速缓冲器，可使CPU进行外部存">
+<meta property="og:description" content="GPIO的概念GPIO（Gener Purpose Input&#x2F;Output）是外设中最基本的且最通用的外设GPIO引脚核心作用是作为通用的输入输出口 FLASH的起始地址：0x0800_0000  MCU识别电信号 通过RST引脚传输0，跳到起始电路（参考复位电路） BOOT0和BOOT1引脚；设置自举模式 GPIO的定义对某个引脚进行高低电平的输出，以及检查某个引脚的电平状态TTL电">
 <meta property="og:locale" content="zn_CN">
-<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/Cache/1.png">
-<meta property="article:published_time" content="2025-11-11T08:18:02.688Z">
-<meta property="article:modified_time" content="2025-11-12T03:37:31.630Z">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/bootstrap/2.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/bootstrap/8.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/bootstrap/9.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/bootstrap/10.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/bootstrap/11.png">
+<meta property="article:published_time" content="2025-11-18T04:37:05.999Z">
+<meta property="article:modified_time" content="2025-11-18T07:34:32.486Z">
 <meta property="article:author" content="tianyulong31">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tianyulong31.github.io.git/assets/images/Cache/1.png">
+<meta name="twitter:image" content="http://tianyulong31.github.io.git/assets/images/bootstrap/2.png">
   
   
   
@@ -48,7 +52,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"dateCreated":"2025-11-11T16:18:02+08:00","dateModified":"2025-11-12T11:37:31+08:00","datePublished":"2025-11-11T16:18:02+08:00","description":"","headline":"高速缓存与其他存储设备","mainEntityOfPage":{"@type":"WebPage","@id":"http://tianyulong31.github.io.git/2025/11/11/%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8E%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/"},"publisher":{"@type":"Organization","name":"tianyulong31","sameAs":[]},"url":"http://tianyulong31.github.io.git/2025/11/11/%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8E%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"dateCreated":"2025-11-18T12:37:05+08:00","dateModified":"2025-11-18T15:34:32+08:00","datePublished":"2025-11-18T12:37:05+08:00","description":"","headline":"GPIO外设","mainEntityOfPage":{"@type":"WebPage","@id":"http://tianyulong31.github.io.git/2025/11/18/GPIO%E5%A4%96%E8%AE%BE/"},"publisher":{"@type":"Organization","name":"tianyulong31","sameAs":[]},"url":"http://tianyulong31.github.io.git/2025/11/18/GPIO%E5%A4%96%E8%AE%BE/","image":[]}</script>
   
 </head>
 <body>
@@ -80,44 +84,36 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-11-11T08:18:02.688Z">2025-11-11</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-11-12T03:37:31.630Z">2025-11-12</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-11-18T04:37:05.999Z">2025-11-18</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-11-18T07:34:32.486Z">2025-11-18</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>高速缓存与其他存储设备</span></h1>
+        <h1 class="text title"><span>GPIO外设</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><p>本文为嵌入式系统设计师教程相关阅读笔记，记录学习内容以便后来查看以及分享我的学习积累</p>
-<h1 id="高速缓存Cache"><a href="#高速缓存Cache" class="headerlink" title="高速缓存Cache"></a>高速缓存Cache</h1><p>位置：位于处理器和外部内存之间<br>速度比RAM更快的存储器一般称之为高速缓存器</p>
-<p>当处理器执行程序时需要不断的访问内存，而读取内存的速度比CPU慢，严重制约系统实际性能</p>
-<p>CPU总是访问当前内存地址的相邻地址，符合局部性访问原理，基于此原理通过在CPU和外部存储器之间设计高速缓冲器，可使CPU进行外部存储设备的局部存储，<strong>可提高对CPU对外部存储设备的访问效率</strong>。</p>
-<p>Cache的主要作用：对外部存储设备的缓冲<br>Cache的组成：内部由块号和块内偏移组成<br>原理：<br>(1)Cache收到CPU访问内存地址</p>
-<p>(2)Cache将CPU访问内存的地址分解为块号和块内偏移</p>
-<p>(3)利用分解的块号查找Cache内部的Cache块</p>
-<p>(4)通过（3）找到一个即为命中，再用块内偏移区索引该块中的数据：当前是读内存即可立即将Cache中缓存的数据返回给CPU；<br>如果是写操作：<br>1）<strong>Write-Through（写直达）</strong><br>动作：数据同时写入Cache和主存<br>优点：数据一致性高，主存始终是最新的<br>缺点：写操作慢，因为每次都要写入主存<br>2）<strong>Write-Back（写回）</strong><br>动作：数据写回Cache，不立即写入主存，当Cache行替换时才写回主存<br>优点：写操作快，减少主存访问次数<br>缺点：数据一次性差，主存数据不是最新的<br>3）<strong>Write-Allocate（写分配）</strong><br>动作：写操作时，若数据不在Cache中，先将数据加载到Cache中再写入<br><strong>通常与Write-Back搭配使用</strong><br>优点：后续写操作可以命中Cache<br>缺点：首次写操作需要额外一次读操作<br>4）<strong>NO-Write-Allocate（非写分配）</strong><br>动作：数据不在Cache中直接写入主存，不加载到Cache<br><strong>通常与Write-Through搭配使用</strong></p>
-<p>例子：采用<strong>Write-Back（写回）<strong>和</strong>Write-Allocate（写分配）</strong><br>写入一个地址，如果Cache命中，只写Cache，标记为dirty<br>写入一个地址，如果Cache不命中，先从主存加载该地址的数据到Cache，然后再写入Cache，并标记为dirty<br>当该Cache行被替换时，才会把dirty数据写回主存</p>
-<p>(5)如果未命中，Cache首先查找内部Cache内部有没有空闲块，若找到了空闲块，就在该块中装入CPU访问内存地址对应的内存块，若是读内存操作就把这个地址对应的数据返回给CPU，写入操作根据类型不同，动作也不同</p>
-<p>(6)如果没有找到空闲块，则需要使用Cache管理中的块替换策略，找到Cache中可替换出去的块，如果是读内存操作，那么根据替换块的块号和状态，Cache会决定是否把这个块写刀内存中，同时把这个地址对应的数据返回给CPU，写入操作根据类型不同，动作也不同</p>
-<p>Cache出现命中和不命中的原因： Cache 只是主存的一小部分“副本”，不可能把全部内存都装进去，所以任何映射策略都必然出现</p>
-<p>现代计算机默认路径是Cache，CPU读取内存任何数据都会经过Cache<br>但机器里还有大量刻意绕过 Cache 的区间：<br>1.内存映射 I&#x2F;O（MMIO）、PCIe BAR、显卡帧缓冲<br>2.DMA 共享环形缓冲区、网卡描述符队列<br>3.由驱动标记为 UC&#x2F;WC 或 ARM Device&#x2F;Greedy 的页这些区域 CPU 一访问就直接走内存总线，不进任何 Cache 层次</p>
-<p>Cache的重要作用<br>Cache通过提高CPU访问效率来缓解CPU和内存之间的速度不匹配</p>
-<p>Cache的工作机制示意图<br><img src="/assets/images/Cache/1.png" alt="1"></p>
-<h1 id="其他存储设备"><a href="#其他存储设备" class="headerlink" title="其他存储设备"></a>其他存储设备</h1><p><strong>1.快闪存储器（FLASH）</strong><br>简称闪存，闪存的大部分芯片需要块擦拭，正因为写入速度较快，所以称为闪存</p>
-<p>FLASH分为两类；NOR FLASH和NAND FLASH<br>（1）NOR FLASH<br>任何FLASH的写入操作只能在空或已擦拭的单元内进行，即在写入操作前必须进行擦拭，NOR FLASH在擦拭前把先将目标块内所有位都写为0<br>NOR FLASH带有SRAM接口，易存取其内部每一个字节，可直接连接系统总线构成内存储器</p>
-<p>（2）NAND FLASH<br>NAND器件使用复杂的I&#x2F;O口来串行的存取数据，但不能构成内存，只能构成外存储器<br>NAND的读和写操作一般采取512字节的块</p>
-<p>两者对比<br>1.NOR的读速度比NAND快，但NAND的写入速度远比NOR快<br>2.NAND的擦拭速度远比NOR的快，因为NAND的擦拭单元更小，擦拭电路更少<br>3.NOR FLASH上可直接运存程序，NAND FLASH只能存储信息</p>
-<p><strong>2.磁盘、光盘等存储介质</strong></p>
-<p>1）磁盘<br>磁盘存取速度都最快、具有较大的存储容量</p>
-<p>磁盘存储器是由盘片、驱动的器、控制器和接口组成<br>1.盘片的两面用来存储信息<br>2.驱动器控制数据的写入和读写<br>3.控制器接收主机发出的命令，控制磁盘驱动器写入和读写，实现主机与其的数据转移和传送<br>4.接口是主机和磁盘存储器之间的连接逻辑</p>
-<p>磁盘也被称为硬盘存储器，其作用原理和组成大致相同<br>硬盘驱动器内使用了多个盘片，提高了存储器的存储容量</p>
-<p>硬盘的接口方式决定了硬盘的性能<br>常见的接口有IDE（ATA）和SCSI，还有一些采用PCMCIA或USB接口<br>IDE用于普通用户SCSI用于服务器等高端应用场合</p>
-<p>2）光盘<br>利用磁头变化和磁头电流进行读或写</p>
-<p>3）CF（Compact FLASH）<br>IDE接口的固态硬盘，块存&#x2F;耐震&#x2F;大容量，针脚多、体积大</p>
-<p>4）SD（Secure Digital Memory Card）<br>基于半导体快闪记忆器，重量轻、高记忆容量、快速数据传输、极大的移动灵活性和很好的安全性</p>
+  </div><article class="md-text content"><h1 id="GPIO的概念"><a href="#GPIO的概念" class="headerlink" title="GPIO的概念"></a>GPIO的概念</h1><p>GPIO（Gener Purpose Input&#x2F;Output）是外设中最基本的且最通用的外设<br>GPIO引脚核心作用是作为通用的输入输出口</p>
+<p>FLASH的起始地址：0x0800_0000  MCU识别电信号 通过RST引脚传输0，跳到起始电路（参考复位电路）</p>
+<p>BOOT0和BOOT1引脚；设置自举模式</p>
+<h1 id="GPIO的定义"><a href="#GPIO的定义" class="headerlink" title="GPIO的定义"></a>GPIO的定义</h1><p>对某个引脚进行高低电平的输出，以及检查某个引脚的电平状态<br>TTL电平协议：+5V等价于逻辑‘1’，0V等价于逻辑‘0’<br>电平范围：大于2.4V表示高电平，小于0.4V表示低电平</p>
+<p><img src="/assets/images/bootstrap/2.png" alt="2"><br>电源引脚：VCC、VDD、VSS、VDDA、VSSA、VREF+等电源引脚<br>晶振引脚：PC14、PC15、PD0、PD1（带有OSC）属于晶振引脚也可作为其他功能使用<br>复位引脚：NRST属于复位引脚<br>BOOT引脚：BOOT是专用引脚，BOOT1属于功能引脚（设置芯片的自举模式）<br>GPIO引脚：该芯片共有48个引脚，GPIO引脚有37个<br>下载引脚：PA13、PA14、PB3、PB4等都属于下载引脚（JTAG、SWD）</p>
+<h1 id="引脚的命名"><a href="#引脚的命名" class="headerlink" title="引脚的命名"></a>引脚的命名</h1><p>一般IO口的命名由P（Pin）开头，分为很多端口，以字母A至H来命名<br>每个组（端口）有16个引脚，引脚编号为0至15，<br>即端口A的引脚范围为：PA0至PA15，端口B的引脚范围为：PB0至PB15</p>
+<p>例如：51单片机也有IO口，一般8051有40个引脚，其中1个复位引脚，2个晶振引脚、2个电源引脚，3个存储选择引脚，剩下32个引脚作为IO口<br>8051把31个IO口进行分租，分为4个端口，每个端口8个引脚，端口是以数字0<del>3进行分区，每个端口的8个引脚是以数字0</del>7进行区分P00<del>P07、P10</del>P17……</p>
+<h1 id="引脚的功能"><a href="#引脚的功能" class="headerlink" title="引脚的功能"></a>引脚的功能</h1><p>一般的默认功能都是输入输出<br>引脚也有其他的功能被称为第二功能，只能使用ADC通道和DAC需要把引脚设置模拟模式<br>其他情况下想要把引脚当作别的功能使用，需要把引脚设置复用功能<br><em>需了解更多功能需要查阅数据手册</em></p>
+<p>以STM32F40x芯片手册为例：<br><img src="/assets/images/bootstrap/8.png" alt="8"></p>
+<h1 id="GPIO外设的使用"><a href="#GPIO外设的使用" class="headerlink" title="GPIO外设的使用"></a>GPIO外设的使用</h1><p>学习硬件开发，一般都从点亮LED开始，主要是以基础外设作为入门，掌握外设的控制流程</p>
+<h1 id="LED灯原理"><a href="#LED灯原理" class="headerlink" title="LED灯原理"></a>LED灯原理</h1><p> <img src="/assets/images/bootstrap/9.png" alt="9"></p>
+<p> 发光二极管：具有单向导电性，因为极管内部有一个PN结（P型半导体和N型半导体组成）<br> 导体&lt;半导体&lt;绝缘体<br> 半导体材料：硅、锗<br> 硅是晶体结构，内部不含杂质，所以这种半导体也被称为本征半导体</p>
+<p> 电阻：保护二极管<br> 如果二极管的电流的阈值是10mA</p>
+<p> 输出高电平，LED灭，两端电压一样无法产生电势差<br> 输出低电平，LED亮，形成电流回路LED灯亮</p>
+<p> <img src="/assets/images/bootstrap/10.png" alt="10"></p>
+<p> 为人为控制导电能力需要向本征半导体加入元素</p>
+<p> P型半导体：positive 向硅晶体加入少量的硼元素，硼元素：5 最外层有3个价电子</p>
+<p> N型半导体：negative 向硅晶体加入少量的磷元素，磷元素：15最外层有5个价电子<br>受温度影响，会做热运动，磷元素最外层剩余的1个价电子会受到热运动的影响，脱落束缚，会变成自由电子，带负电</p>
+<p><img src="/assets/images/bootstrap/11.png" alt="11"></p>
 </article>
 <div class="article-footer">
     <section id="license">
@@ -129,7 +125,7 @@
 
 </div>
 
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/11/12/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%8F%A3/">通用输入输出接口和模块数模接口</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/11/06/%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%A6%82%E8%BF%B0/">STM32开发板概述</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/11/17/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E8%AE%A1%E6%95%B0%E5%99%A8/">定时器和计数器</a></div></section></div>
 
 
 
@@ -143,7 +139,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98Cache"><span class="toc-text">高速缓存Cache</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-text">其他存储设备</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GPIO%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">GPIO的概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPIO%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">GPIO的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%84%9A%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-text">引脚的命名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%84%9A%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">引脚的功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPIO%E5%A4%96%E8%AE%BE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">GPIO外设的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LED%E7%81%AF%E5%8E%9F%E7%90%86"><span class="toc-text">LED灯原理</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
