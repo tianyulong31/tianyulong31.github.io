@@ -17,22 +17,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>定时器和计数器 - 田钰龙的博客</title>
+  <title>嵌入式系统总线及通信接口 - 田钰龙的博客</title>
 
   
-    <meta name="description" content="从硬件角度看，定时器和计数器是一样的，其差别在于在特定应用中的使用情况 硬件定时器系统时间：由定时器&#x2F;计数器产生的输出脉冲触发中断而产生输出脉冲的周期叫一个滴答，表示发生一次时间中断 实时操作系统提供的定时器硬件功能包括： （1）初始化定时器：负责定时器的相关寄存器，滴答的时间间隔，以及挂载系统时钟中断处理程序 （2）维持相对时间和日历时间：相对时间间隔就是相对于系统启动以来的时间，发生">
+    <meta name="description" content="PCI、PCI-E等接口基本原理与结构PCI外设部件互连标准它定义32位数据总线，并且可扩展为64位 特点： （1）高速性33或66MHz，32 位下峰值 132 MB&#x2F;s，64 位下 264 MB&#x2F;s的传输速率 （2）即插即用PCI板卡的硬件资源根据微机各自要求统一分配，不必关心是否产生冲突 （3）可靠性结构：独立于处理器结构，中间缓冲器的设计方式在不同时钟频率下不必担心导致">
 <meta property="og:type" content="article">
-<meta property="og:title" content="定时器和计数器">
-<meta property="og:url" content="http://tianyulong31.github.io.git/2025/11/17/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E8%AE%A1%E6%95%B0%E5%99%A8/">
+<meta property="og:title" content="嵌入式系统总线及通信接口">
+<meta property="og:url" content="http://tianyulong31.github.io.git/2025/11/24/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF%E5%8F%8A%E9%80%9A%E4%BF%A1%E6%8E%A5%E5%8F%A3/">
 <meta property="og:site_name" content="田钰龙的博客">
-<meta property="og:description" content="从硬件角度看，定时器和计数器是一样的，其差别在于在特定应用中的使用情况 硬件定时器系统时间：由定时器&#x2F;计数器产生的输出脉冲触发中断而产生输出脉冲的周期叫一个滴答，表示发生一次时间中断 实时操作系统提供的定时器硬件功能包括： （1）初始化定时器：负责定时器的相关寄存器，滴答的时间间隔，以及挂载系统时钟中断处理程序 （2）维持相对时间和日历时间：相对时间间隔就是相对于系统启动以来的时间，发生">
+<meta property="og:description" content="PCI、PCI-E等接口基本原理与结构PCI外设部件互连标准它定义32位数据总线，并且可扩展为64位 特点： （1）高速性33或66MHz，32 位下峰值 132 MB&#x2F;s，64 位下 264 MB&#x2F;s的传输速率 （2）即插即用PCI板卡的硬件资源根据微机各自要求统一分配，不必关心是否产生冲突 （3）可靠性结构：独立于处理器结构，中间缓冲器的设计方式在不同时钟频率下不必担心导致">
 <meta property="og:locale" content="zn_CN">
-<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/PIT.png">
-<meta property="article:published_time" content="2025-11-17T04:35:43.272Z">
-<meta property="article:modified_time" content="2025-11-17T05:24:42.684Z">
+<meta property="article:published_time" content="2025-11-24T02:53:26.701Z">
+<meta property="article:modified_time" content="2025-11-24T04:22:17.955Z">
 <meta property="article:author" content="tianyulong31">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tianyulong31.github.io.git/assets/images/PIT.png">
   
   
   
@@ -48,7 +46,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"dateCreated":"2025-11-17T12:35:43+08:00","dateModified":"2025-11-17T13:24:42+08:00","datePublished":"2025-11-17T12:35:43+08:00","description":"","headline":"定时器和计数器","mainEntityOfPage":{"@type":"WebPage","@id":"http://tianyulong31.github.io.git/2025/11/17/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E8%AE%A1%E6%95%B0%E5%99%A8/"},"publisher":{"@type":"Organization","name":"tianyulong31","sameAs":[]},"url":"http://tianyulong31.github.io.git/2025/11/17/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E8%AE%A1%E6%95%B0%E5%99%A8/","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"dateCreated":"2025-11-24T10:53:26+08:00","dateModified":"2025-11-24T12:22:17+08:00","datePublished":"2025-11-24T10:53:26+08:00","description":"","headline":"嵌入式系统总线及通信接口","mainEntityOfPage":{"@type":"WebPage","@id":"http://tianyulong31.github.io.git/2025/11/24/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF%E5%8F%8A%E9%80%9A%E4%BF%A1%E6%8E%A5%E5%8F%A3/"},"publisher":{"@type":"Organization","name":"tianyulong31","sameAs":[]},"url":"http://tianyulong31.github.io.git/2025/11/24/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF%E5%8F%8A%E9%80%9A%E4%BF%A1%E6%8E%A5%E5%8F%A3/","image":[]}</script>
   
 </head>
 <body>
@@ -80,30 +78,34 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-11-17T04:35:43.272Z">2025-11-17</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-11-17T05:24:42.684Z">2025-11-17</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-11-24T02:53:26.701Z">2025-11-24</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-11-24T04:22:17.955Z">2025-11-24</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>定时器和计数器</span></h1>
+        <h1 class="text title"><span>嵌入式系统总线及通信接口</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><p>从硬件角度看，定时器和计数器是一样的，其差别在于在特定应用中的使用情况</p>
-<h1 id="硬件定时器"><a href="#硬件定时器" class="headerlink" title="硬件定时器"></a>硬件定时器</h1><p>系统时间：由定时器&#x2F;计数器产生的输出脉冲触发中断而产生<br>输出脉冲的周期叫一个滴答，表示发生一次时间中断</p>
-<p>实时操作系统提供的定时器硬件功能包括：</p>
-<p>（1）初始化定时器：负责定时器的相关寄存器，滴答的时间间隔，以及挂载系统时钟中断处理程序</p>
-<p>（2）维持相对时间和日历时间：相对时间间隔就是相对于系统启动以来的时间，发生一次滴答，系统相对时间增加1<br>内核可以实时获取启动时刻的日历时间</p>
-<p>（3）任务有限等待的计时：用时间等待链来组织需要延迟处理的对象或任务</p>
-<p>（4）时间片轮换调度的计时：在时钟中断服务程序中对正在运行的以执行时间数值加1<br>加1后若任务已执行时间同任务的时间片相等，则结束运行转入就绪队列</p>
-<h1 id="软件定时器"><a href="#软件定时器" class="headerlink" title="软件定时器"></a>软件定时器</h1><p>实现定时功能，内核需要支持软件定时器管理功能，用户就可以根据需求创建、使用软件定时器<br>软件定时器的定值计数为0时，触发定时器的时间服务例程，用户在此例程中完成自己需要的操作<br>在中断服务处理程序中需要对软件定时值进行减1操作</p>
-<p>软件可实现看门狗功能<br>在应用某个地方执行软件定时器的停止计时操作，确保定时器在系统正常运行的情况不会到期，不会触发定时器服务例程<br>如果某个时候系统进入了定时器服务例程，则停止定时操作没有被执行到，系统出现错误</p>
-<h1 id="可编程间隔定时器"><a href="#可编程间隔定时器" class="headerlink" title="可编程间隔定时器"></a>可编程间隔定时器</h1><p>可编程间隔定时器（PIT）又称计数器<br>主要功能：时间计数和生成时间中断，以解决系统时间控制问题</p>
-<p>PIT的典型原理如图：</p>
-<p><img src="/assets/images/PIT.png" alt="1"></p>
-<p>通信寄存器在计数硬件和操作系统之间建立联系<br>操作系统通过这些寄存器控制计数硬件的工作方式，读取硬件当前状态和计数值等信息<br>操作系统内核初始化时，内核向定时、计数器写入控制字和计数初值<br>而后计数硬件就会对晶振产生的输入脉冲进行计数操作<br>计数器从计数初值开始每收到一次脉冲信号，计数器就减1。当减到0时，就会输出高低电平<br>开始从计数初值开始重复另一次计数，从而产生一个输出脉冲</p>
+  </div><article class="md-text content"><h1 id="PCI、PCI-E等接口基本原理与结构"><a href="#PCI、PCI-E等接口基本原理与结构" class="headerlink" title="PCI、PCI-E等接口基本原理与结构"></a>PCI、PCI-E等接口基本原理与结构</h1><p><strong>PCI</strong><br>外设部件互连标准<br>它定义32位数据总线，并且可扩展为64位</p>
+<p>特点：</p>
+<p>（1）高速性<br>33或66MHz，32 位下峰值 132 MB&#x2F;s，64 位下 264 MB&#x2F;s的传输速率</p>
+<p>（2）即插即用<br>PCI板卡的硬件资源根据微机各自要求统一分配，不必关心是否产生冲突</p>
+<p>（3）可靠性<br>结构：独立于处理器结构，中间缓冲器的设计方式<br>在不同时钟频率下不必担心导致性能下降<br>PCI总线增加了奇偶校验错、系统错</p>
+<p>（4）复杂性<br>硬件上采用大容量、高速度的复杂可编程逻辑器件CPLD或FPGA芯片<br>软件上则需要根据所用的操作系统编制支持功能的设备驱动程序</p>
+<p>（5）自动配置<br>PCI插卡插入系统BIOS自动为插卡分配存储地址、中断、和某些定时信息</p>
+<p>（6）共享中断<br>采用低电平有效方式，多个中断可共享一条中断线</p>
+<p>（7）扩展性高<br>采用多级PCI总线，这些总线上均可并发工作<br>与ISA、EISA、MCA总线完全兼并</p>
+<p>（8）多路复用<br>地址总线和数据总线共用一组物理线路<br>通过“时分复用”完成先地址、后数据的传输</p>
+<p>（9）严格规范<br>PCI总线对协议、时序、电气性能、机械性能都有严格规定<br>接口的实现有较高的难度</p>
+<p><strong>PCI-E</strong><br>基本架构；根组件、交换器、各种终端设备<br>PCI-E 在带宽、传输速度、扩展性和兼容性等方面都优于传统的 PCI</p>
+<p><strong>EISA</strong><br>在ISA的基础上使用双层插座，在其98条信号线基础上又增加98根信号线<br>EISA完全兼备ISA总线</p>
+<p><strong>VME</strong><br>数据传输机制：异步<br>地址宽度：16、24、32、40、60<br>数据线路宽度：8、16、24、32、64<br>数据传输速率为0~500Mb&#x2F;s<br>Unalign Data传输能力、误差纠正能力、自我诊断能力</p>
+<p><strong>CPCI</strong><br>高性能工业用总线</p>
+<p><strong>PCMCIA</strong><br>专门用在笔记本或PDA、数码相机等便携性设备上的一种接口规范</p>
+<p>PCMCIA总线分为两类：<br>一类为16位的PCMCIA，一类为32位的cardBus</p>
 </article>
 <div class="article-footer">
     <section id="license">
@@ -115,7 +117,7 @@
 
 </div>
 
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/11/18/GPIO%E5%A4%96%E8%AE%BE/">GPIO外设</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/11/13/%E8%87%AA%E4%B8%BE%E6%A8%A1%E5%BC%8F%E9%80%89%E6%8B%A9/">自举模式的选择</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/11/18/GPIO%E5%A4%96%E8%AE%BE/">GPIO外设</a></div></section></div>
 
 
 
@@ -129,7 +131,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-text">硬件定时器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-text">软件定时器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%97%B4%E9%9A%94%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-text">可编程间隔定时器</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PCI%E3%80%81PCI-E%E7%AD%89%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%93%E6%9E%84"><span class="toc-text">PCI、PCI-E等接口基本原理与结构</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
