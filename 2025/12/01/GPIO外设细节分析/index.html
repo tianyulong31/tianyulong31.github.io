@@ -17,24 +17,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>2025年11月个人总结 - 田钰龙的博客</title>
+  <title>GPIO外设细节分析 - 田钰龙的博客</title>
 
   
-    <meta name="description" content="在这一个月以来在我的学习历程中还是面临着各种挑战，包括学习效率低下，学习计划方向不明确用了大把大把时间实际却只掌握了小部分知识一到周末就完全不想去学习了，暴露了我很多缺点。 博客11月在CSDN发布博客共7章原创博客  其中高质量文章共5章 这是我CSDN上写博客的第一个月，截至目前为止共有5156的收藏量132的收藏量 在个人博客下发布8篇文章  都是关于嵌入式学习过程中的重要的知识笔记 在我下">
+    <meta name="description" content="基于stm32f103c8t6以及参考stm32f40x 点亮LED灯基于STM32f103c8t6的电灯程序 使用STN32f103C8T6在GOIP_InitTypeDef结构体中缺少两种模式1.指定GPIO引脚的输出类型2.指定GPIO引脚的内部结构 点亮LED灯的基本代码 1234567891011121314151617181920212223242526272829303132#inc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2025年11月个人总结">
-<meta property="og:url" content="http://tianyulong31.github.io.git/2025/11/27/2025%E5%B9%B411%E6%9C%88%E6%80%BB%E7%BB%93/">
+<meta property="og:title" content="GPIO外设细节分析">
+<meta property="og:url" content="http://tianyulong31.github.io.git/2025/12/01/GPIO%E5%A4%96%E8%AE%BE%E7%BB%86%E8%8A%82%E5%88%86%E6%9E%90/">
 <meta property="og:site_name" content="田钰龙的博客">
-<meta property="og:description" content="在这一个月以来在我的学习历程中还是面临着各种挑战，包括学习效率低下，学习计划方向不明确用了大把大把时间实际却只掌握了小部分知识一到周末就完全不想去学习了，暴露了我很多缺点。 博客11月在CSDN发布博客共7章原创博客  其中高质量文章共5章 这是我CSDN上写博客的第一个月，截至目前为止共有5156的收藏量132的收藏量 在个人博客下发布8篇文章  都是关于嵌入式学习过程中的重要的知识笔记 在我下">
+<meta property="og:description" content="基于stm32f103c8t6以及参考stm32f40x 点亮LED灯基于STM32f103c8t6的电灯程序 使用STN32f103C8T6在GOIP_InitTypeDef结构体中缺少两种模式1.指定GPIO引脚的输出类型2.指定GPIO引脚的内部结构 点亮LED灯的基本代码 1234567891011121314151617181920212223242526272829303132#inc">
 <meta property="og:locale" content="zn_CN">
-<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/blogex/1.png">
-<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/blogex/2.png">
-<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/blogex/3.png">
-<meta property="article:published_time" content="2025-11-27T09:00:40.673Z">
-<meta property="article:modified_time" content="2025-11-27T09:56:16.095Z">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/1.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/2.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/3.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/4.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/5.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/6.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/7.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/8.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/9.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/10.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/11.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/12.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/13.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/14.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/15.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/16.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/18.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/19.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/20.png">
+<meta property="og:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/17.png">
+<meta property="article:published_time" content="2025-12-01T03:52:21.538Z">
+<meta property="article:modified_time" content="2025-12-01T11:09:12.179Z">
 <meta property="article:author" content="tianyulong31">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tianyulong31.github.io.git/assets/images/blogex/1.png">
+<meta name="twitter:image" content="http://tianyulong31.github.io.git/assets/images/stm32f103/1.png">
   
   
   
@@ -50,7 +67,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"dateCreated":"2025-11-27T17:00:40+08:00","dateModified":"2025-11-27T17:56:16+08:00","datePublished":"2025-11-27T17:00:40+08:00","description":"","headline":"2025年11月个人总结","mainEntityOfPage":{"@type":"WebPage","@id":"http://tianyulong31.github.io.git/2025/11/27/2025%E5%B9%B411%E6%9C%88%E6%80%BB%E7%BB%93/"},"publisher":{"@type":"Organization","name":"tianyulong31","sameAs":[]},"url":"http://tianyulong31.github.io.git/2025/11/27/2025%E5%B9%B411%E6%9C%88%E6%80%BB%E7%BB%93/","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyulong31","sameAs":[]},"dateCreated":"2025-12-01T11:52:21+08:00","dateModified":"2025-12-01T19:09:12+08:00","datePublished":"2025-12-01T11:52:21+08:00","description":"","headline":"GPIO外设细节分析","mainEntityOfPage":{"@type":"WebPage","@id":"http://tianyulong31.github.io.git/2025/12/01/GPIO%E5%A4%96%E8%AE%BE%E7%BB%86%E8%8A%82%E5%88%86%E6%9E%90/"},"publisher":{"@type":"Organization","name":"tianyulong31","sameAs":[]},"url":"http://tianyulong31.github.io.git/2025/12/01/GPIO%E5%A4%96%E8%AE%BE%E7%BB%86%E8%8A%82%E5%88%86%E6%9E%90/","image":[]}</script>
   
 </head>
 <body>
@@ -82,35 +99,63 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-11-27T09:00:40.673Z">2025-11-27</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-11-27T09:56:16.095Z">2025-11-27</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-12-01T03:52:21.538Z">2025-12-01</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-12-01T11:09:12.179Z">2025-12-01</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>2025年11月个人总结</span></h1>
+        <h1 class="text title"><span>GPIO外设细节分析</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><p>在这一个月以来在我的学习历程中还是面临着各种挑战，包括学习效率低下，学习计划方向不明确<br>用了大把大把时间实际却只掌握了小部分知识<br>一到周末就完全不想去学习了，暴露了我很多缺点。</p>
-<h1 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h1><p>11月在CSDN发布博客共7章原创博客</p>
-<p><img src="/assets/images/blogex/1.png" alt="1"><br><img src="/assets/images/blogex/2.png" alt="2"></p>
-<p>其中高质量文章共5章</p>
-<p>这是我CSDN上写博客的第一个月，截至目前为止共有5156的收藏量132的收藏量</p>
-<p>在个人博客下发布8篇文章</p>
-<p><img src="/assets/images/blogex/3.png" alt="3"></p>
-<p>都是关于嵌入式学习过程中的重要的知识笔记</p>
-<p>在我下个月的计划中编写博客的文章必须超过本月所写文章数量<br>并且在dev.to写一篇英文博客并发布</p>
-<h1 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h1><p>在11月的时间利用中严重不足，一部分因为学校课程的关系<br>包括个人精力难以让我维持较高的专注力去学习新知识</p>
-<p>在现在还存在的问题主要是在周末时间上的利用<br>一道周末我就“摆烂”，不学习只玩。<br>我决定在下一个月中周六可以玩一天至少周日必须学习</p>
-<p>在工作日中我在每天的晚上给自己设置的是自由时间<br>有时候是在学习搞项目<br>有时候在玩游戏刷视频看小说<br>至少在下一个月中夜晚学习的时间的天数要与玩的天数持平</p>
-<h1 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h1><p>在这一个月我阅读了嵌入式系统设计教程第二版<br>可阅读的效率也是非常的低，刚刚读完第二章<br>掌握的程度也不是一想就会</p>
-<p>最近我也一直在思考如何提高自己的学习效率<br>我也相信只有更好的提升自我能力才能在更多复杂的知识前不至于逃避<br>我现在也只能用大把大把的学习时间，慢慢体会这个提升效率的过程</p>
-<p>包括我背四级单词的效率也是非常的慢<br>到目前为止我也没有一个实际的方法去解决</p>
-<p>这个月我能把Linux基础入门发知识学完<br>对我以后学习嵌入式开发会有很大的帮助</p>
-<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>1.下个月完全投入学习中，开始嵌入式项目实战<br>2.c++编写一个较有含金量的项目<br>3.认真阅读嵌入式系统设计师教程<br>4.学过的内容要时常回头复习</p>
-<h1 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h1><p>人一旦摸到点上限就会渴求更高的上限<br>我也一样<br>若我能完成我的目标我也会在未来给自己设计更大的挑战<br>最好希望看到这篇博客的人也能有一个更好的未来</p>
+  </div><article class="md-text content"><p>基于stm32f103c8t6以及参考stm32f40x</p>
+<h1 id="点亮LED灯"><a href="#点亮LED灯" class="headerlink" title="点亮LED灯"></a>点亮LED灯</h1><p>基于STM32f103c8t6的电灯程序</p>
+<p>使用STN32f103C8T6在GOIP_InitTypeDef结构体中缺少两种模式<br>1.指定GPIO引脚的输出类型<br>2.指定GPIO引脚的内部结构</p>
+<p>点亮LED灯的基本代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;stm32f10x.h&quot;</span><br><span class="line"></span><br><span class="line">//1.定义GPIO外设的结构体变量</span><br><span class="line">GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    //2.打开GPIOB端口的时钟</span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //3.配置PB9为输出引脚</span><br><span class="line"></span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //对GPIOB端口进行初始化</span><br><span class="line">    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_9;</span><br><span class="line">    GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</span><br><span class="line"></span><br><span class="line">    while (1)</span><br><span class="line">&#123;</span><br><span class="line">    GPIOB-&gt;BRR = GPIO_Pin_9;   // 拉低</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    GPIOB-&gt;BSRR = GPIO_Pin_9;  // 拉高</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="GPIO-InitTypeDef"><a href="#GPIO-InitTypeDef" class="headerlink" title="GPIO_InitTypeDef"></a>GPIO_InitTypeDef</h1><p>stm32f103c8t6对该结构体的定义</p>
+<p><img src="/assets/images/stm32f103/1.png" alt="1"></p>
+<p>stm32f40x对该结构体的定义</p>
+<p><img src="/assets/images/stm32f103/2.png" alt="2"></p>
+<h1 id="GPIO外设原理"><a href="#GPIO外设原理" class="headerlink" title="GPIO外设原理"></a>GPIO外设原理</h1><p><strong>（1）打开时钟</strong><br>要使用GPIO外设，必须提前打开GPIO端口外设时钟，需要使用ST提供的函数</p>
+<p>打开外设时钟的原因：因为STM32属于低功耗的MCU，而为了降低功耗<br>STM32的MCU在复位之后会默认关闭绝大数的外设时钟<br>所以用户在使用MCU内部的某个外设，就需要打开该外设的时钟</p>
+<p>控制硬件就需要控制硬件的寄存器<br>数字电路角度，寄存器的作用是暂存一组二进制数据，32bit的寄存器能暂存32bit的数据<br>原因是寄存器内部是由一组触发器级联组成，触发器可以暂存1bit数据<br>而触发器在数字电路中属于时序逻辑</p>
+<p>寄存器：用来存储一组二值代码<br>一个触发器能储存1位二值代码，N个触发器组成的寄存器能储存一组N位二值代码<br>对于寄存器中的触发器只要要求它们具有置1、置0的功能即可</p>
+<p>触发器：能够存储1位二值信号的基本电路统称为触发器</p>
+<p>触发器必须有两个特点：<br>1.具有两个能自行保持的稳定状态，用来表示逻辑状态的0和1<br>2.在触发信号的操作中，根据不同的输入信号可以置成1或0的状态</p>
+<p>触发方式一般为电平触发、脉冲触发、边沿触发</p>
+<p>边沿触发：上升沿和下降沿被称为边沿</p>
+<p><img src="/assets/images/stm32f103/3.png" alt="3"></p>
+<p>电平触发</p>
+<p><img src="/assets/images/stm32f103/4.png" alt="4"></p>
+<p>移位寄存器</p>
+<p><img src="/assets/images/stm32f103/5.png" alt="5"></p>
+<p>触发器是需要触发的，不管是边沿还是电平触发，必须外部提供持续的脉冲信号</p>
+<p><img src="/assets/images/stm32f103/6.png" alt="6"></p>
+<p>OSC晶振引脚<br><img src="/assets/images/stm32f103/7.png" alt="7"><br>STM32F103 的 OSC 引脚（PD0&#x2F;OSC_IN 和 PD1&#x2F;OSC_OUT）即使没有外接晶振<br>芯片内部的时钟树仍然可以为寄存器中的触发器提供脉冲信号</p>
+<p>时钟相当于外设的开关，不打开时钟，则晶振产生的振荡信号就无法输入到MCU内部的外设中<br>则没有时钟信号，触发器无法触发，则触发器无法锁存数据<br>而寄存器是由N个触发器组成，所以寄存器就无法工作<br>而控制硬件必须通过寄存器实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//2.打开GPIOB端口的时钟</span><br><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/images/stm32f103/8.png" alt="8"><br>STM32f103C8T6<br>SYSCLK（内核主频）最大 72 MHz<br>AHB 总线（HCLK）直接等于 SYSCLK，所以也是 72 MHz<br>APB1 总线（PCLK1）最高 36 MHz（如果 SYSCLK&#x3D;72 MHz，则缺省 2 分频）<br>APB2 总线（PCLK2）最高 72 MHz（可以 1 分频）</p>
+<p><img src="/assets/images/stm32f103/9.png" alt="9"><br>STM32f40x</p>
+<p>STM32的MCU内部有多个外设，作用性能都各不相同，使用的时钟频率也不同<br>ST公司为了降低芯片功耗，把不同性能的外设挂载在不同性能总线上<br>需掌握3条总线<br>AHB高级高性能总线（总线频率是168MHZ）、APB1高级外设总线（42MHz）、APB2高级外设总线（84MHz）</p>
+<p>而MCU内部的外设的性能不同，需要把外设挂载到对应的总线，利用总线对外设进行控制</p>
+<p>总线和外设的关系<br>总线和外设的关系相当于高速公路和汽车的关系，高速公路分为快慢车道<br>而汽车性能较低则需要到慢车道，性能较高则需要到快车道行驶</p>
+<p>参考手册中可以查询到需要使用外设总线<br><img src="/assets/images/stm32f103/10.png" alt="10"></p>
+<p><img src="/assets/images/stm32f103/11.png" alt="11"><br>指定AHB1总线下的外设时钟，可以是任意组合</p>
+<p><img src="/assets/images/stm32f103/12.png" alt="12"><br>打开端口对应的地址</p>
+<p>打开了GPIO外设的时钟之后，可以对GPIO外设的初始化结构体中的成员进行赋值</p>
+<p><strong>（2）设置GPIO引脚的编号</strong><br><img src="/assets/images/stm32f103/13.png" alt="13"></p>
+<p><strong>（3）设计GIPO引脚的模式</strong><br><img src="/assets/images/stm32f103/14.png" alt="14"><br>IN 输入模式（较常用） OUT 输出模式（经常用）<br>AF 复用模式（偶尔用） AN  模拟模式（总也不用）</p>
+<p>GPIO功能描述<br><img src="/assets/images/stm32f103/15.png" alt="15"></p>
+<p>推挽和开漏模式的区别<br>推挽模式能输出高电平和低电平<br>开漏模式只能输出低电平<br><img src="/assets/images/stm32f103/16.png" alt="16"></p>
+<p>使用两个三极管可以降低功耗</p>
+<p><strong>（4）设计GPIO的内部电阻</strong><br><img src="/assets/images/stm32f103/18.png" alt="18"></p>
+<p><strong>（5）设置GGPIO的速度</strong><br><img src="/assets/images/stm32f103/19.png" alt="19"><br>输出速度指的是引脚电平的翻转速度，如果选择高速，则会增加功耗和噪声<br>如果不知道选择哪种，则选高速即可</p>
+<p>如果设置好了各个GPIO结构体的各个成员的值<br>需要把架构体中的值写入到GPIO端口寄存器<br><img src="/assets/images/stm32f103/20.png" alt="20"></p>
+<h1 id="三极管"><a href="#三极管" class="headerlink" title="三极管"></a>三极管</h1><p>NMOS管可以理解为PNP型三极管<br>PMOS管可以理解为NPN型三极管<br><img src="/assets/images/stm32f103/17.png" alt="17"></p>
+<p>导通条件：<br>NPN型三极管在基极加高电平<br>PNP型三极管在基极加低电平</p>
 </article>
 <div class="article-footer">
     <section id="license">
@@ -122,7 +167,7 @@
 
 </div>
 
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2025/11/28/USB%E3%80%81%E4%B8%B2%E5%8F%A3%E7%AD%89%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%93%E6%9E%84/">USB、串口等基本原理与结构</a></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/11/24/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF%E5%8F%8A%E9%80%9A%E4%BF%A1%E6%8E%A5%E5%8F%A3/">嵌入式系统总线及通信接口</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/11/28/USB%E3%80%81%E4%B8%B2%E5%8F%A3%E7%AD%89%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%93%E6%9E%84/">USB、串口等基本原理与结构</a></div></section></div>
 
 
 
@@ -136,7 +181,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2"><span class="toc-text">博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E9%97%B4"><span class="toc-text">时间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%88%E7%8E%87"><span class="toc-text">效率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%91%E6%88%98"><span class="toc-text">挑战</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%82%B9%E4%BA%AELED%E7%81%AF"><span class="toc-text">点亮LED灯</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPIO-InitTypeDef"><span class="toc-text">GPIO_InitTypeDef</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPIO%E5%A4%96%E8%AE%BE%E5%8E%9F%E7%90%86"><span class="toc-text">GPIO外设原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1"><span class="toc-text">三极管</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
